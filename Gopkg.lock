@@ -1,0 +1,7 @@
+memo = "d84934aee7f1a446ea50f3eacdb4426b57fc014cdb2079d814003145fa7d4622"
+
+[[projects]]
+  name = "github.com/caarlos0/env"
+  packages = ["."]
+  revision = "0cf029d5748c52beb2c9d20c81880cb4bdf8f788"
+  version = "v3.0"
