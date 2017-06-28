@@ -1,0 +1,21 @@
+language: go
+go:
+- '1.8'
+before_install:
+- go get github.com/mitchellh/gox
+install:
+- true
+script:
+- go test -v . ./httpd/...
+after_success:
+- ./build.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: bmfO9qMw+7kP5fhWcSyzZmQThMP9dnChK3KfuXxz0FsM0XVZAACyBsHwbjAWnACP+WbZNutLsOYAPGrqkiNN8joVjJAbVlzVW2IfspG5CEmrCKysGp455wRJJqJvaKUzweS73Z6riVyUbKXbNDBVmiNKQbbklj9T0dUt9lSykmIcfTR2TteEbn13Bhqx+liaqzEzE0iWDd42tjnQpJ65HmoMAGxW6/PLp91rtmyv7O/f2aJZOp0lViwFCOyfjz2hGIKWUZxyICJYeqRAqSEobAx3LT9gBfbPHgEU96H68LZBLrl8JIwN3U4dLd2Hs0+VvLZ35UqQwHeP7TCB0d3miy7XqQGt9eau0Z3x4PLC9ZkLeogXO6fEQmTQvOZFxwwtkxlgoVQ7wFfTQ1O+/GUP3tbOnQVm5ZHdNQhEWCes847Wxs3AEnTP4V8OJbjYNOxsW10sPRqPStjBH9hpVd834D5wDqWKmkABAy3JxjoZXI1e3Xd6ve0vE6xqCZgr4+CF5hyMGdinEAwszlS7q6Qqja4OEniDzp9bhfgBbje8LcyLEFtAYcYgModSdZKc7TBv/fyn1gNSraTATRJ0QzpbTqdmHHYLmhcFeB02RimvutoDy7zdMioZ784paaQFS0cEGxJoTgHghnXz9XLd07o2ZTd/kc/vlG1tNKvKncWnuG0=
+  skip_cleanup: true
+  file_glob: true
+  file: dist/*
+  on:
+    tags: true
+    repo: zenreach/redirector
